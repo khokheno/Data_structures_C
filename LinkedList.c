@@ -32,11 +32,88 @@ void Print()
 	printf("\n");
 
 }
-void Append(int x) {};
+void Append(int x) {
+	struct node* Append(int num) {
+	struct node* tmp = (struct node*)malloc(sizeof(struct node));
+	tmp->data = num;
+	tmp->next = NULL;
+	if (head == NULL) {
+		head = tmp;
+		tail = tmp;
+	}
+	else {
+		tail->next = tmp;
+		tail = tail->next;
+	}
+
+};
 void reverse() {}
-void InsertAtHead(int x) {};
-void InsertAtPosition(int x,int position) {};
-void DeleteAtPosition(int position) {};
+void InsertAtHead(int x) {
+	struct node* InsertAtHead(int num) {
+		struct node* tmp = (struct node*)malloc(sizeof(struct node));
+
+		tmp->data = num;
+		tmp->next = head;
+		head = tmp;
+
+		return head;
+
+};
+void InsertAtPosition(int x,int position) {
+	struct node* InsertAtPosition(int num, int index) {
+		int count = 0;
+		struct node* pointer = head;
+		struct node* tmp = (struct node*)malloc(sizeof(struct node));
+		tmp->data = num;
+		tmp->next = NULL;
+		if (index == 0) {
+			head = insertToHead(num);
+
+		}
+		else
+		{
+			while (count != (index - 1))
+			{
+				pointer = pointer->next;
+				count++;
+
+			}
+			tmp->next = pointer->next;
+			pointer->next = tmp;
+		}
+		head = pointer;
+		return head;
+};
+void DeleteAtPosition(int position) {
+	struct node* DeleteAtPosition(int index) {
+
+		struct node* tmp = (struct node*)malloc(sizeof(struct node));
+		struct node* after = (struct node*)malloc(sizeof(struct node));
+		struct node* befor = (struct node*)malloc(sizeof(struct node));
+
+		int i = index;
+		tmp = head;
+
+
+		while (tmp != NULL && i > 0)
+		{
+			after = tmp->next;
+			if (i == 2 && tmp->next != NULL) {
+
+				tmp->next = after->next;
+				head = tmp;
+				break;
+
+			}
+
+			tmp = tmp->next;
+
+			i--;
+
+
+		}
+		return head;
+};
 
 
 
